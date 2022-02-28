@@ -1,0 +1,25 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#grid-container {
+    display: flex;
+    height: 480px;
+    width: 480px;
+    background-color: #555555;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.grid-box {
+    height: 30px;
+    width: 30px;
+    background-color: black;
+    margin: 0px;
+}
+
+.grid-box:hover {
+    background-color: white;
+}
