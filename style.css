@@ -1,25 +1,43 @@
 body {
+    font-family: Roboto, sans-serif;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: #030618;
+    margin: 0;
+}
+
+h2 {
+    color: whitesmoke;
+    margin: 10px;
+}
+
+.painted {
+    background-color: black;
+    height: 31.25px;
+    width: 31.25px;
+    background-color: white;
+    margin: 0px;
 }
 
 #grid-container {
     display: flex;
-    height: 480px;
-    width: 480px;
-    background-color: #555555;
+    height: 500px;
+    width: 500px;
     flex-wrap: wrap;
     justify-content: space-between;
+    border: solid 5px #ff2b2b;
+    border-radius: 5px;
 }
 
 .grid-box {
-    height: 30px;
-    width: 30px;
-    background-color: black;
+    height: 31.25px;
+    width: 31.25px;
+    background-color: white;
     margin: 0px;
 }
 
-.grid-box:hover {
-    background-color: white;
-}
+/* .grid-box:hover {
+    background-color: black;
+} */
