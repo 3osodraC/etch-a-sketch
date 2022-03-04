@@ -13,14 +13,6 @@ h2 {
     margin: 10px;
 }
 
-.painted {
-    background-color: black;
-    height: 31.25px;
-    width: 31.25px;
-    background-color: white;
-    margin: 0px;
-}
-
 #grid-container {
     display: flex;
     height: 500px;
@@ -32,12 +24,25 @@ h2 {
 }
 
 .grid-box {
-    height: 31.25px;
-    width: 31.25px;
+    height: 29.25px;
+    width: 29.25px;
+    border: solid 0.5px #e8e8e8;
     background-color: white;
     margin: 0px;
 }
 
-/* .grid-box:hover {
+.reset-btn {
+    border: solid 5px #ff2b2b;
+    border-radius: 5px;
+    color: #000000;
+    background-color: white;
+    padding: 16px 128px;
+    font-size: larger;
+    font-weight: bolder;
+    margin: 16px;
+}
+
+.reset-btn:hover {
     background-color: black;
-} */
+    color: white;
+}
