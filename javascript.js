@@ -1,17 +1,17 @@
 const gridContainer = document.querySelector('#grid-container');
 const resetBtn = document.querySelector('.reset-btn');
+let gridBox;
 
 // Creates a 16x16 grid of white squares inside the board.
 for(let i = 0; i < 256; i++) {
-    let gridBox = document.createElement('div');
+    gridBox = document.createElement('div');
     gridContainer.appendChild(gridBox);
     gridBox.className = 'grid-box';
 }
 
-const gridBoxes = document.querySelectorAll('.grid-box');
+let gridBoxes = document.querySelectorAll('.grid-box');
 
 let pxSize = 500 / 16 - 2;
-let previousNumberOfBoxes = 256;
 
 // Reset & Resize button.
 resetBtn.addEventListener('click', () => {
@@ -25,17 +25,26 @@ resetBtn.addEventListener('click', () => {
 
     pxSize = 500 / size - 2.001;
 
+    removePreviousGrid();
     createNewGrid(size);
+    gridBoxes = document.querySelectorAll('.grid-box');
     resize();
 });
-
 paint();
 
 // Functions:
 
+function removePreviousGrid() {
+    gridBoxes.forEach(gridBox => {
+        gridContainer.removeChild(gridBox);
+    });
+}
+
 // Uses the user's input (size) to create a new grid with the desired size.
 function createNewGrid(size) {
-    for(let i = 0; i < size * size - previousNumberOfBoxes; i++) {
+    pxSize = 500 / size - 2.001;
+
+    for(let i = 0; i < size * size; i++) {
         let gridBox = document.createElement('div');
         document.getElementById('grid-container').appendChild(gridBox);
         gridBox.className = 'grid-box';
@@ -51,9 +60,9 @@ function resize() {
 }
 
 // Turns the squares black when the cursor hovers over them.
-function paint() {
+function paint(size) {
     gridBoxes.forEach(gridBoxes => gridBoxes.addEventListener('mouseover', () => {
-        gridBoxes.setAttribute('style',
-        `background-color: black; height: ${pxSize}px; width: ${pxSize}px;`)
+    gridBoxes.setAttribute('style',
+    `background-color: black; height: ${pxSize}px; width: ${pxSize}px;`)
     }));
 }
