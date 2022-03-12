@@ -12,6 +12,8 @@ let gridBoxes = document.querySelectorAll('.grid-box');
 
 let pxSize = 500 / 16 - 2;
 
+paint();
+
 // Reset & Resize button.
 resetBtn.addEventListener('click', () => {
     gridBoxes.forEach(gridBoxes => gridBoxes.setAttribute('style', 'background-color: white;'));
@@ -27,8 +29,8 @@ resetBtn.addEventListener('click', () => {
     removePreviousGrid();
     createNewGrid(size);
     resize();
+    paint();
 });
-paint();
 
 // Functions:
 
