@@ -8,7 +8,6 @@ for(let i = 0; i < 256; i++) {
     gridContainer.appendChild(gridBox);
     gridBox.className = 'grid-box';
 }
-
 let gridBoxes = document.querySelectorAll('.grid-box');
 
 let pxSize = 500 / 16 - 2;
@@ -27,7 +26,6 @@ resetBtn.addEventListener('click', () => {
 
     removePreviousGrid();
     createNewGrid(size);
-    gridBoxes = document.querySelectorAll('.grid-box');
     resize();
 });
 paint();
@@ -48,8 +46,9 @@ function createNewGrid(size) {
         let gridBox = document.createElement('div');
         document.getElementById('grid-container').appendChild(gridBox);
         gridBox.className = 'grid-box';
-        gridBox.setAttribute('style', `height: ${pxSize}px; width: ${pxSize}px;`);
     }
+    // Reassigns the query selector to the new grid.
+    gridBoxes = document.querySelectorAll('.grid-box');
 }
 
 // Resizes the grid's boxes to fit the container.
@@ -60,7 +59,7 @@ function resize() {
 }
 
 // Turns the squares black when the cursor hovers over them.
-function paint(size) {
+function paint() {
     gridBoxes.forEach(gridBoxes => gridBoxes.addEventListener('mouseover', () => {
     gridBoxes.setAttribute('style',
     `background-color: black; height: ${pxSize}px; width: ${pxSize}px;`)
