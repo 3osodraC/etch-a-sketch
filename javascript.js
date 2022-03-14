@@ -1,4 +1,5 @@
 const gridContainer = document.querySelector('#grid-container');
+const resetResizeBtn = document.querySelector('.reset-resize-btn');
 const resetBtn = document.querySelector('.reset-btn');
 let gridBox;
 
@@ -15,7 +16,7 @@ let pxSize = 500 / 16 - 2;
 paint();
 
 // Reset & Resize button.
-resetBtn.addEventListener('click', () => {
+resetResizeBtn.addEventListener('click', () => {
     gridBoxes.forEach(gridBoxes => gridBoxes.setAttribute('style', 'background-color: white;'));
 
     let size = 16;
@@ -24,12 +25,16 @@ resetBtn.addEventListener('click', () => {
         parseInt(size, 10);
     } while(size > 100);
 
-    pxSize = 500 / size - 2.001;
-
     removePreviousGrid();
     createNewGrid(size);
     resize();
     paint();
+});
+
+// Reset button.
+resetBtn.addEventListener('click', () => {
+    gridBoxes.forEach(gridBoxes => gridBoxes.setAttribute('style', 'background-color: white; '))
+    resize();
 });
 
 // Functions:
@@ -42,7 +47,7 @@ function removePreviousGrid() {
 
 // Uses the user's input (size) to create a new grid with the desired size.
 function createNewGrid(size) {
-    pxSize = 500 / size - 2.001;
+    pxSize = 500 / size - 2;
 
     for(let i = 0; i < size * size; i++) {
         let gridBox = document.createElement('div');
@@ -53,7 +58,6 @@ function createNewGrid(size) {
     gridBoxes = document.querySelectorAll('.grid-box');
 }
 
-// Resizes the grid's boxes to fit the container.
 function resize() {
     gridBoxes.forEach(gridBox => {
         gridBox.setAttribute('style', `height: ${pxSize}px; width: ${pxSize}px;`);
