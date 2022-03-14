@@ -1,11 +1,30 @@
 body {
-    font-family: Roboto, sans-serif;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
     background-color: #030618;
+    display: flex;
+    font-family: Roboto, sans-serif;
+    flex-direction: column;
+    justify-content: center;
     margin: 0;
+}
+
+#grid-container {
+    border: solid 5px #ff2b2b;
+    border-radius: 5px;
+    background-color: #505050;
+    display: flex;
+    flex-wrap: wrap;
+    height: 500.5px;
+    justify-content: space-between;
+    width: 500.5px;
+}
+
+.grid-box {
+    background-color: white;
+    border: solid 0.5px #505050;
+    height: 29.25px;
+    margin: 0px;
+    width: 29.25px;
 }
 
 h2 {
@@ -13,47 +32,28 @@ h2 {
     margin: 10px;
 }
 
-#grid-container {
-    display: flex;
-    height: 500.5px;
-    width: 500.5px;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    border: solid 5px #ff2b2b;
-    border-radius: 5px;
-    background-color: #505050;
-}
-
-.grid-box {
-    height: 29.25px;
-    width: 29.25px;
-    border: solid 0.5px #505050;
+.reset-btn {
     background-color: white;
-    margin: 0px;
-}
-
-.reset-resize-btn {
     border: solid 3px #ff2b2b;
     border-radius: 5px;
     color: #000000;
+    font-size: medium;
+    font-weight: bold;
+    padding: 3px 64px;
+}
+
+.reset-resize-btn {
     background-color: white;
-    padding: 3px 30px;
+    border: solid 3px #ff2b2b;
+    border-radius: 5px;
+    color: #000000;
     font-size: medium;
     font-weight: bolder;
     margin: 5px;
+    padding: 3px 30px;
 }
 
 .reset-resize-btn:hover, .reset-btn:hover {
     background-color: black;
     color: white;
-}
-
-.reset-btn {
-    border: solid 3px #ff2b2b;
-    border-radius: 5px;
-    color: #000000;
-    background-color: white;
-    padding: 3px 64px;
-    font-size: medium;
-    font-weight: bold;
 }
