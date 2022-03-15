@@ -15,19 +15,26 @@ let pxSize = 500 / 16 - 2;
 
 paint();
 
-// Reset & Resize button.
 resetResizeBtn.addEventListener('click', () => {
     gridBoxes.forEach(gridBoxes => gridBoxes.setAttribute('style', 'background-color: white;'));
 
     let size = 16;
-    let alphCheck;
+    let numCheck;
+    let floatCheck = false;
     do {
         size = prompt('Set grid height & width (i.e 3x3 input: 3)');
 
-        alphCheck = size.match(/[abcdefghijklmnopqrstuvwxyz]/i);
+        numCheck = size.match(/[1234567890]/);
+        Number(size);
 
-        parseInt(size, 10);
-    } while(size > 100 || size < 1 || alphCheck != null);
+        // If the remainder of a number divided by 1 != 0, then it's a float.
+        if(size % 1 !== 0) {
+            floatCheck = true;
+        } else {
+            floatCheck = false;
+        }
+
+    } while(size > 100 || size < 1 || numCheck === null || floatCheck === true);
 
     removePreviousGrid();
     createNewGrid(size);
@@ -35,7 +42,6 @@ resetResizeBtn.addEventListener('click', () => {
     paint();
 });
 
-// Reset button.
 resetBtn.addEventListener('click', () => {
     gridBoxes.forEach(gridBoxes => gridBoxes.setAttribute('style', 'background-color: white; '))
     resize();
