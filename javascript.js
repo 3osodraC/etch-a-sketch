@@ -23,6 +23,10 @@ resetResizeBtn.addEventListener('click', () => {
     let floatCheck = false;
     do {
         size = prompt('Set grid height & width (i.e 3x3 input: 3)');
+        
+        if(size === null) {
+            resize();
+        }
 
         numCheck = size.match(/[1234567890]/);
         Number(size);
