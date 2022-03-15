@@ -20,10 +20,14 @@ resetResizeBtn.addEventListener('click', () => {
     gridBoxes.forEach(gridBoxes => gridBoxes.setAttribute('style', 'background-color: white;'));
 
     let size = 16;
+    let alphCheck;
     do {
-        size = prompt('Set Size:');
+        size = prompt('Set grid height & width (i.e 3x3 input: 3)');
+
+        alphCheck = size.match(/[abcdefghijklmnopqrstuvwxyz]/i);
+
         parseInt(size, 10);
-    } while(size > 100);
+    } while(size > 100 || size < 1 || alphCheck != null);
 
     removePreviousGrid();
     createNewGrid(size);
