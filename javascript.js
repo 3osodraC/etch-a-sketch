@@ -16,29 +16,28 @@ let pxSize = 500 / 16 - 2;
 paint();
 
 resetResizeBtn.addEventListener('click', () => {
-    gridBoxes.forEach(gridBoxes => gridBoxes.setAttribute('style', 'background-color: white;'));
-
     let size = 16;
     let numCheck;
     let floatCheck = false;
     do {
         size = prompt('Set grid height & width (i.e 3x3 input: 3)');
-        
+
+        Number(size);
+        numCheck = size.match(/[0-9]/);
+        // If the remainder of a number divided by 1 != 0, then it's a float.
+        size % 1 !== 0 ? floatCheck = true : floatCheck = false;
+
         if(size === null) {
             resize();
+        } else if(size > 100) {
+            alert('Max size: 100');
+        } else if(size < 1) {
+            alert('Minimum size: 1');
+        } else if(numCheck === null || floatCheck === true) {
+            alert('Non-Integers are invalid.');
         }
-
-        numCheck = size.match(/[1234567890]/);
-        Number(size);
-
-        // If the remainder of a number divided by 1 != 0, then it's a float.
-        if(size % 1 !== 0) {
-            floatCheck = true;
-        } else {
-            floatCheck = false;
-        }
-
-    } while(size > 100 || size < 1 || numCheck === null || floatCheck === true);
+    }
+    while(size > 100 || size < 1 || numCheck === null || floatCheck === true);
 
     removePreviousGrid();
     createNewGrid(size);
@@ -47,7 +46,7 @@ resetResizeBtn.addEventListener('click', () => {
 });
 
 resetBtn.addEventListener('click', () => {
-    gridBoxes.forEach(gridBoxes => gridBoxes.setAttribute('style', 'background-color: white; '))
+    reset();
     resize();
 });
 
@@ -70,6 +69,10 @@ function createNewGrid(size) {
     }
     // Reassigns the query selector to the new grid.
     gridBoxes = document.querySelectorAll('.grid-box');
+}
+
+function reset() {
+    gridBoxes.forEach(gridBoxes => gridBoxes.setAttribute('style', 'background-color: white;'));
 }
 
 function resize() {
